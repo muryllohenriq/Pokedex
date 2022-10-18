@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Badge from "./Badge";
-import { Card, Title, Number, Image } from "./CardPokemon.style"
+import "./CardPokemon.css";
 
 type PokemonTypeProps = {
   type: {
@@ -17,13 +17,13 @@ export type CardPokemonProps = {
 function CardPokemon(props: CardPokemonProps) {
   return (
     <Link to={`/details/${props.id}`}>
-      <Card className={`type--${props.types[0].type.name.toLowerCase()}`}>
-        <div>
-          <Number>
+      <div className={`card type--${props.types[0].type.name.toLowerCase()}`}>
+        <div className="info">
+          <span className="info__number">
             #{String(props.id).padStart(3, "0")}
-          </Number>
+          </span>
           {/* padStart = define o tamanho e completa a string com o padrão proposto, no caso "0" */}
-          <Title>{props.name}</Title>
+          <p className="info__name">{props.name}</p>
           {props.types.map((item, index) => {
             return <Badge key={index} name={item.type.name} />;
             {
@@ -31,11 +31,12 @@ function CardPokemon(props: CardPokemonProps) {
             }
           })}
         </div>
-        <Image
+        <img
+          className="card__img"
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${props.id}.png`}
           alt={props.name}
         />
-      </Card>
+      </div>
     </Link>
   );
 }
