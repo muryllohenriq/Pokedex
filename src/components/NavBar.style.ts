@@ -20,3 +20,11 @@ export const BtnGoBack = styled(Link)`
   line-height: 21px;
   color: #747476;
 `;
+
+export const TotalPokemons = styled.span`
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #747476;
+  margin-right: 2rem;
+`;

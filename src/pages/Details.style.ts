@@ -94,9 +94,16 @@ export const Number = styled.span`
 font-weight: 700;
 font-size: 24px;
 line-height: 31px;
-color: rgba(23);
+color: rgba(23, 23, 27, 0.6);
 `;
 
 export const Title = styled.h1`
+  font-weight: 700;
+font-size: 64px;
+line-height: 83px;
+color: #ffffff;
+`;
 
+export const Button = styled.button`
+  
 `;
