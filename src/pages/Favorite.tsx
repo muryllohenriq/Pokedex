@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import CardPokemon, { CardPokemonProps } from "../components/CardPokemon";
-import { List } from "../components/List.style";
 import NavBar from "../components/NavBar";
-import Title from "../components/Title"
+import Title from "../components/Title";
 import api from "../services/api";
+import { StoreState } from "../redux";
+import { List } from "../components/List.style";
 
-import { Input, } from "./Home.style";
-
-function Home() {
+function Favorite() {
   const [isLoading, setIsLoading] = useState(true);
   const [pokemonList, setPokemonList] = useState<CardPokemonProps[]>([]);
-  const [textoBusca, setTextoBusca] = useState("");
+  const listaPokemonsFavoritos = useSelector(
+    (state: StoreState) => state.favorite
+  );
 
   async function getPokemonData() {
-    const { data } = await api.get("pokemon?limit=151");
-
     const dadosCompletos = await Promise.all(
-      data.results.map(async (result: { url: string }) => {
-        const { data } = await api.get(result.url);
+      listaPokemonsFavoritos.map(async (pokemonId) => {
+        const { data } = await api.get("pokemon/" + pokemonId);
 
         return {
           id: data.id,
@@ -42,33 +43,22 @@ function Home() {
   return (
     <>
       <NavBar />
-      <Title text="Encontre todos os pokémons em um só lugar"></Title>
-
-      <Input
-        type="text"
-        placeholder="Busque pelo seu Pokemon ;) id ou nome"
-        value={textoBusca}
-        onChange={(event) => setTextoBusca(event.target.value)}
-      />
+      <Title text="Seus pokémons favoritos" />
 
       <List>
-        {pokemonList
-          .filter(
-            (pokemon) =>
-              pokemon.name.includes(textoBusca) ||
-              String(pokemon.id) === textoBusca
-          )
-          .map((pokemon, index) => (
+        {pokemonList.map((pokemon, index) => {
+          return (
             <CardPokemon
               key={index}
               id={pokemon.id}
               name={pokemon.name}
               types={pokemon.types}
             />
-          ))}
+          );
+        })}
       </List>
     </>
   );
 }
 
-export default Home;
+export default Favorite;

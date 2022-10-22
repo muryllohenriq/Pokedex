@@ -9,7 +9,22 @@ import api from "../services/api";
 import { add, remove } from "../redux/favoriteSlice";
 import { StoreState } from "../redux";
 
-import { Container, Image, Card, Number, Title, Button } from "./Details.style";
+import {
+  Container,
+  Image,
+  Card,
+  Number,
+  Title,
+  Button,
+  Label,
+  Value,
+  ButtonMobile,
+} from "./Details.style";
+
+type DetailsProps = CardPokemonProps & {
+  height: number;
+  weight: number;
+};
 
 function Details() {
   const { id } = useParams();
@@ -18,8 +33,8 @@ function Details() {
     (state: StoreState) => state.favorite
   );
   const [isLoading, setIsLoading] = useState(true);
-  const [pokemonData, setPokemonData] = useState<CardPokemonProps>(
-    {} as CardPokemonProps
+  const [pokemonData, setPokemonData] = useState<DetailsProps>(
+    {} as DetailsProps
   );
 
   function handleClickAdd() {
@@ -37,6 +52,8 @@ function Details() {
       id: data.id,
       name: data.name,
       types: data.types,
+      height: data.height / 10,
+      weight: data.weight / 10,
     });
     setIsLoading(false);
   }
@@ -68,12 +85,28 @@ function Details() {
             return <Badge key={index} name={item.type.name} />;
           })}
 
+          <Label>Peso</Label>
+          <Value>{pokemonData.weight}kg</Value>
+
+          <Label>Tamanho</Label>
+          <Value>{pokemonData.height}m</Value>
+
           {!!listaPokemonsFavoritos.find(
             (item) => String(item) === String(id)
           ) ? (
-            <button onClick={handleClickRemove}>Remover dos favoritos</button>
+            <>
+              <Button onClick={handleClickRemove}>Remover dos favoritos</Button>
+              <ButtonMobile onClick={handleClickRemove}>
+                -
+              </ButtonMobile>
+            </>
           ) : (
-            <button onClick={handleClickAdd}>Adicionar aos favoritos</button>
+            <>
+              <Button onClick={handleClickAdd}>Adicionar aos favoritos</Button>
+              <ButtonMobile onClick={handleClickAdd}>
+                +
+              </ButtonMobile>
+            </>
           )}
         </Card>
       </Container>

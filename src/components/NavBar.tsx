@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { StoreState } from "../redux";
 import { Nav, BtnGoBack, TotalPokemons } from "./NavBar.style";
 
@@ -14,6 +15,7 @@ function NavBar(props: NavBarProps) {
       <BtnGoBack to="/" className="brand">
         Pokédex
       </BtnGoBack>
+      <Link to="favorite">Favoritos</Link>
       <div>
         <TotalPokemons>
           Total de favoritos: {totalPokemons.length}
