@@ -1,6 +1,6 @@
 import { Container } from "./Badge.style"
 
-type BadgeProps = {
+export type BadgeProps = {
   name: string;
 };
 
