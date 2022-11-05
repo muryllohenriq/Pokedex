@@ -16,7 +16,7 @@ export type CardPokemonProps = {
 
 function CardPokemon(props: CardPokemonProps) {
   return (
-    <Link to={`/details/${props.id}`}>
+    // <Link to={`/details/${props.id}`}>
       <Card className={`type--${props.types[0].type.name.toLowerCase()}`}>
         <div>
           <Number>
@@ -36,7 +36,7 @@ function CardPokemon(props: CardPokemonProps) {
           alt={props.name}
         />
       </Card>
-    </Link>
+    // </Link>
   );
 }
 
