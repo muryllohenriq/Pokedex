@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { StoreState } from "../redux";
-import { Nav, BtnGoBack, TotalPokemons } from "./NavBar.style";
+import { Nav, CustomLink, TotalPokemons } from "./NavBar.style";
 
 type NavBarProps = {
   hasGoBack?: boolean;
@@ -12,15 +12,20 @@ function NavBar(props: NavBarProps) {
 
   return (
     <Nav>
-      <BtnGoBack to="/" className="brand">
+      <CustomLink to="/" fontSize={24} lineheight={31} color="#17171b">
         Pokédex
-      </BtnGoBack>
-      <Link to="favorite">Favoritos</Link>
+      </CustomLink>
       <div>
+      <CustomLink to="/favorite">
         <TotalPokemons>
           Total de favoritos: {totalPokemons.length}
         </TotalPokemons>
-        {props.hasGoBack && <BtnGoBack to="/">Voltar</BtnGoBack>}
+      </CustomLink>
+        {props.hasGoBack && (
+          <CustomLink to="/" fontSize={16} lineheight={21} color="#747476">
+            Voltar
+          </CustomLink>
+        )}
       </div>
     </Nav>
   );
