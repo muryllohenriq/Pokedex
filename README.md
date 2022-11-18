@@ -1,6 +1,6 @@
 # Site Pokedex
 
-Este é uma pokedex desenvolvida com react, typescript e mais outras bibliotecas, produzida durante o [Gama Experience - 44](https://gama.academy).
+Esta é uma pokedex desenvolvida com react, typescript e mais outras bibliotecas, produzida durante o [Gama Experience - 44](https://gama.academy).
 
 ## Table of contents
 
@@ -19,8 +19,11 @@ Este é uma pokedex desenvolvida com react, typescript e mais outras bibliotecas
 
 ### Screenshot
 
+#### Tela principal
 ![Screenshot_1](https://user-images.githubusercontent.com/105292489/202736124-a5da8349-39dc-41ab-bace-3818f584ccea.jpg)
+#### Tela de cada Pokemon
 ![Screenshot_2](https://user-images.githubusercontent.com/105292489/202736131-42eecaad-2895-412e-92df-c511f33a4e98.jpg)
+#### Tela dos seus favoritos
 ![Screenshot_3](https://user-images.githubusercontent.com/105292489/202736133-248345c1-e640-4c44-9252-38c88838786a.jpg)
 
 ### Links
@@ -29,6 +32,8 @@ Este é uma pokedex desenvolvida com react, typescript e mais outras bibliotecas
 - Live Site URL: [Here](https://pokedex-gamma-pearl.vercel.app)
 
 ## My process
+
+Foi meu primeiro projeto em react, eu não sabia nada sobre a biblioteca, e eu adorei. O processo de construção é divertido, interativo e a documentação é muito boa. Fazer com typescript deixa mais legal ainda. Criar os components deixa tudo mais limpo e funcional, já que posso reaproveitá-los em outras telas, e ainda estilizar estes components com o styled-components é muito limpo, só é preciso uma boa organização de pastas.
 
 ### Built with
 
@@ -61,28 +66,28 @@ Este é uma pokedex desenvolvida com react, typescript e mais outras bibliotecas
           ))}
       </List>
 ```
+Essa lista foi muito importante pra eu conseguir encontrar os pokemons que eu queria de acordo com cada caractere digitado.
 ```css
-export const Container = styled.div`
-  height: calc(100vh - 4rem - 40px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 0;
-
-  @media only screen and (max-width: 900px) {
-    height: 100%;
-    flex-direction: column;
-  }
-`;
-
-export const Image = styled.img`
+export const Card = styled.div`
   width: 100%;
-  
-  @media only screen and (max-width: 900px) {
-    max-width: 300px;
+  min-height: 115px;
+  background-color: #b9b8d3;
+  border-radius: 10px;
+  padding: 20px;
+
+  position: relative;
+
+  &.type--bug {
+    background-color: #8bd674;
   }
-`;
+  &.type--dark {
+    background-color: #6f6e78;
+  }
+  &.type--dragon {
+    background-color: #7383b9;
+  }
 ```
+Não para por aí... mas achei muito legal eu poder adicionar as cores dos pokemons de acordo com suas classes.
 ```js
       <div>
           <Number>
@@ -98,6 +103,7 @@ export const Image = styled.img`
           })}
         </div>
 ```
+Eu gostei muito dessa lógica pra numerar os pokemons e deixar estático o número de casas decimais.
 ### Continued development
 
 Quero trazer o modo escuro pra tela e melhorar a página de cada pokemon
@@ -105,6 +111,8 @@ Quero trazer o modo escuro pra tela e melhorar a página de cada pokemon
 ### Useful resources
 
 - [Resource 1](https://www.markdownguide.org) - Esse artigo me ajudou muito com o read-me.
+- [Resource 2](https://pt-br.reactjs.org/docs/getting-started.html) - Documentação do react.
+- [Resource 3](https://styled-components.com/docs) - Documentação do styled-components.
 
 ## Author
 
@@ -113,4 +121,4 @@ Quero trazer o modo escuro pra tela e melhorar a página de cada pokemon
 
 ## Acknowledgments
 
-Amei a interação do react e a estilização utilizando styled-components.
+Aprendi a utilizar o react, construir elementos html junto com lógica e ainda estilizá-los e depois reaproveitar tudo digitando uma única linha de código. Quero mais disso!
