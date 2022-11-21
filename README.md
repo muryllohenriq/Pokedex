@@ -66,7 +66,7 @@ Foi meu primeiro projeto em react, eu não sabia nada sobre a biblioteca, e eu a
           ))}
       </List>
 ```
-Essa lista foi muito importante pra eu conseguir encontrar os pokemons que eu queria de acordo com cada caractere digitado.
+Essa lista foi muito importante pra conseguir encontrar os pokemons específicos de acordo com cada caractere digitado.
 ```css
 export const Card = styled.div`
   width: 100%;
